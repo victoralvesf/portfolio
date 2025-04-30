@@ -1,0 +1,22 @@
+---
+import { Signature } from "@/components/signature";
+import { Button } from "@/components/ui/button";
+---
+
+<footer
+  class="border-t border-border/75 flex items-center justify-between px-8 py-2 absolute bottom-0 w-full"
+>
+  <div class="flex items-center gap-2">
+    <span>Made by</span>
+    <div role="img" title="Victor Alves">
+      <Signature className="h-10" />
+    </div>
+  </div>
+
+  <div class="flex items-center gap-2">
+    <span>Built with</span>
+    <a href="https://astro.build/" target="_blank" rel="noreferrer">
+      <Button variant="link" className="p-0 h-fit">Astro</Button>
+    </a>
+  </div>
+</footer>

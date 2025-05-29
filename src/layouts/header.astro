@@ -1,10 +1,15 @@
 ---
 import { Button } from "@/components/ui/button";
+import { FilterToggle } from "@/components/filter-toggle";
 ---
 
 <header
-  class="h-header max-h-header flex items-center justify-center border-b border-border/75 px-8 py-4 bg-foreground/5"
+  class="h-header max-h-header flex items-center justify-between border-b border-border/75 px-8 py-4 bg-foreground/5"
 >
+  <div>
+    <FilterToggle client:only />
+  </div>
+
   <nav>
     <a href="#" tabindex="-1">
       <Button>Info</Button>

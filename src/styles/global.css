@@ -108,11 +108,6 @@ body::before {
   content: " ";
 }
 
-body.mobile::after {
-  display: none;
-  animation: none;
-}
-
 body[data-filter=crt]::before {
   @apply z-98;
   background:

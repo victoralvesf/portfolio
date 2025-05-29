@@ -108,6 +108,18 @@ body::before {
   content: " ";
 }
 
+@media (prefers-reduced-motion: reduce) {
+  body::after,
+  body::before {
+    display: none;
+    animation: none;
+  }
+
+  #toggle-filter-button {
+    display: none;
+  }
+}
+
 body[data-filter=crt]::before {
   @apply z-98;
   background:

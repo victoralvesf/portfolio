@@ -39,7 +39,7 @@ export function FilterToggle() {
   if (mobile) return null
 
   return (
-    <Button onClick={handleClick}>
+    <Button onClick={handleClick} id="toggle-filter-button">
       <SparklesIcon className="size-4 fill-background" />
       <span>{filterLabel}</span>
     </Button>

@@ -13,6 +13,10 @@
   --color-border: var(--foreground);
   --color-ring: var(--foreground);
   --color-secondary: var(--secondary);
+  --color-flicker: var(--flicker-background-color);
+  --color-scanlines-main: var(--scanlines-bg-color-1);
+  --color-scanlines-secondary: var(--scanlines-bg-color-2);
+  --color-gameboy: var(--gameboy-main-bg-color);
 
   --spacing-header: var(--header-height);
   --spacing-footer: var(--footer-height);
@@ -31,11 +35,21 @@
   --background: oklch(0.2178 0 0);
   --foreground: oklch(0.87 0.225 151.28);
   --secondary: oklch(0.18 0.0033 17.47);
+
+  --flicker-background-color: hsla(0, 6%, 7%, .1);
+  
+  --scanlines-bg-color-1: rgba(0, 0, 0, .15);
+  --scanlines-bg-color-2: rgba(0, 0, 0, .3);
+
+  --gameboy-main-bg-color: oklch(0.866 0.0911 125.11);
+  --gameboy-bg-color-1: rgba(0, 0, 0, .35);
+  --gameboy-bg-color-2: rgba(0, 0, 0, .05);
 }
 
 @theme {
   --animate-flicker: flicker 150ms infinite;
 
+  /* For CRT */
   @keyframes flicker {
     0% { opacity: 0.27861 }  
     5% { opacity: 0.34769 }  
@@ -59,6 +73,23 @@
     95% { opacity: 0.36108 }  
     100% { opacity: 0.24387 }
   }
+
+  /* SCANLINES */
+  --animate-scanline: scanline 6s linear infinite;
+
+  @keyframes scanline {
+    0% {
+      transform: translate3d(0, 200000%, 0);
+    }
+  }
+
+  --animate-scanlines: scanlines 1s steps(60) infinite;
+
+  @keyframes scanlines {
+    0% {
+      background-position: 0 50%;
+    }
+  }
 }
 
 @layer base {
@@ -77,16 +108,13 @@ body::before {
   content: " ";
 }
 
-body::after {
-  @apply bg-secondary/15 animate-flicker;
-}
-
 body.mobile::after {
   display: none;
   animation: none;
 }
 
-body::before {
+body[data-filter=crt]::before {
+  @apply z-98;
   background:
     linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
     linear-gradient(
@@ -95,7 +123,35 @@ body::before {
       rgba(0, 255, 0, 0.02),
       rgba(0, 0, 255, 0.06)
     );
-  background-size:
-    100% 2px,
-    3px 100%;
+  background-size: 100% 2px, 3px 100%;
+}
+
+body[data-filter=crt]::after {
+  @apply bg-flicker animate-flicker z-99;
+}
+
+body[data-filter=scanlines]:before {
+  @apply animate-scanlines z-98;
+  background: linear-gradient(180deg, transparent 50%, var(--scanlines-bg-color-1) 51%);
+  background-size: 100% 4px;
+}
+
+body[data-filter=scanlines]:after {
+  @apply animate-scanline h-0.5 opacity-75 w-full z-99 bg-scanlines-secondary;
+}
+
+body[data-filter=gameboy]:before {
+  @apply backdrop-grayscale-100 backdrop-contrast-150 backdrop-brightness-90 bg-gameboy mix-blend-multiply z-98;
+}
+
+body[data-filter=gameboy]:after {
+  @apply z-99;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      var(--gameboy-bg-color-1),
+      var(--gameboy-bg-color-2) 1px,
+      transparent 0,
+      transparent 2px
+    );
 }

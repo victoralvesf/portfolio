@@ -28,7 +28,7 @@
   --footer-height: 60px;
   --content-height: calc(100vh - (var(--header-height) + var(--footer-height)));
 
-  --background: oklch(0.13 0.0386 136.39);
+  --background: oklch(0.2178 0 0);
   --foreground: oklch(0.87 0.225 151.28);
   --secondary: oklch(0.18 0.0033 17.47);
 }

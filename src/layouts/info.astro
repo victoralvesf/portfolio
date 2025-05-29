@@ -1,6 +1,7 @@
 ---
 import { GithubIcon, LinkedinIcon, MailIcon } from "lucide-react";
 import { SocialLink } from "@/components/social";
+import { Image } from "astro:assets";
 
 const socials = [
   {
@@ -27,10 +28,12 @@ const socials = [
   <div
     class="hidden min-w-full aspect-square bg-foreground/10 md:block border-4 border-border/75"
   >
-    <img
+    <Image
       src="/avatar_pixel_art.png"
       alt="Victor Alves"
       class="aspect-square grayscale-50 hover:grayscale-0 transition-all text-transparent"
+      width="1024"
+      height="1024"
     />
   </div>
 

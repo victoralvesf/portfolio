@@ -41,6 +41,9 @@ importers:
       react-dom:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
+      simple-icons-astro:
+        specifier: ^14.15.0
+        version: 14.15.0(astro@5.7.9(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.40.1)(typescript@5.8.3))
       tailwind-merge:
         specifier: ^3.2.0
         version: 3.2.0
@@ -1549,6 +1552,11 @@ packages:
 
   shiki@3.3.0:
     resolution: {integrity: sha512-j0Z1tG5vlOFGW8JVj0Cpuatzvshes7VJy5ncDmmMaYcmnGW0Js1N81TOW98ivTFNZfKRn9uwEg/aIm638o368g==}
+
+  simple-icons-astro@14.15.0:
+    resolution: {integrity: sha512-rfc3sgjoP2VhDpq4B+5HHi+QAnftpfjzcbwdu/sfgWE9R3fMYFusobC69fYkLVVM0j74ko2w1qKQiYzfMH0k7A==}
+    peerDependencies:
+      astro: '>=2.7.1'
 
   simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
@@ -3641,6 +3649,10 @@ snapshots:
       '@shikijs/types': 3.3.0
       '@shikijs/vscode-textmate': 10.0.2
       '@types/hast': 3.0.4
+
+  simple-icons-astro@14.15.0(astro@5.7.9(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.40.1)(typescript@5.8.3)):
+    dependencies:
+      astro: 5.7.9(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.40.1)(typescript@5.8.3)
 
   simple-swizzle@0.2.2:
     dependencies:

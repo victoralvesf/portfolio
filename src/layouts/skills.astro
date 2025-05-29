@@ -1,0 +1,54 @@
+---
+import Css from "simple-icons-astro/Css3";
+import Html from "simple-icons-astro/Html5";
+import Javascript from "simple-icons-astro/Javascript";
+import Typescript from "simple-icons-astro/Typescript";
+import React from "simple-icons-astro/React";
+import Nextjs from "simple-icons-astro/Nextdotjs";
+import Astrojs from "simple-icons-astro/Astro";
+import Tailwind from "simple-icons-astro/Tailwindcss";
+import Nodejs from "simple-icons-astro/Nodedotjs";
+import Php from "simple-icons-astro/Php";
+import Laravel from "simple-icons-astro/Laravel";
+import Inertia from "simple-icons-astro/Inertia";
+import Livewire from "simple-icons-astro/Livewire";
+import Docker from "simple-icons-astro/Docker";
+import GithubActions from "simple-icons-astro/Githubactions";
+import Gitlab from "simple-icons-astro/Gitlab";
+
+const skills = [
+  { label: "HTML", Icon: Html },
+  { label: "CSS", Icon: Css },
+  { label: "JavaScript", Icon: Javascript },
+  { label: "TypeScript", Icon: Typescript },
+  { label: "React", Icon: React },
+  { label: "Next.js", Icon: Nextjs },
+  { label: "Astro", Icon: Astrojs },
+  { label: "Tailwind CSS", Icon: Tailwind },
+  { label: "Node.js", Icon: Nodejs },
+  { label: "PHP", Icon: Php },
+  { label: "Laravel", Icon: Laravel },
+  { label: "Inertia.js", Icon: Inertia },
+  { label: "Livewire", Icon: Livewire },
+  { label: "Docker", Icon: Docker },
+  { label: "Github Actions", Icon: GithubActions },
+  { label: "Gitlab CI/CD", Icon: Gitlab },
+];
+---
+
+<section class="space-y-6 w-full">
+  <h4 class="font-bold text-xl">Skills</h4>
+
+  <ul
+    class="w-full flex overflow-x-scroll md:overflow-x-hidden pb-4 md:pb-0 md:grid md:grid-cols-2 lg:grid-cols-4 gap-4"
+  >
+    {
+      skills.map(({ label, Icon }) => (
+        <li class="flex gap-2 items-center text-nowrap lg:text-wrap">
+          <Icon class="size-6 min-w-6" />
+          {label}
+        </li>
+      ))
+    }
+  </ul>
+</section>

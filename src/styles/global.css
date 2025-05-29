@@ -44,6 +44,11 @@
   --gameboy-main-bg-color: oklch(0.866 0.0911 125.11);
   --gameboy-bg-color-1: rgba(0, 0, 0, .35);
   --gameboy-bg-color-2: rgba(0, 0, 0, .05);
+
+  --scrollbar-color-thumb: oklch(0.87 0.225 151.28);
+  --scrollbar-color-track: oklch(0.38 0.089 153.03);
+  --scrollbar-width: auto;
+  --scrollbar-width-legacy: 6px;
 }
 
 @theme {
@@ -161,4 +166,29 @@ body[data-filter=gameboy]:after {
       transparent 0,
       transparent 2px
     );
+}
+
+/* ===== Scrollbar CSS ===== */
+@supports selector(::-webkit-scrollbar) {
+  *::-webkit-scrollbar {
+    width: var(--scrollbar-width-legacy);
+    height: var(--scrollbar-width-legacy);
+    max-width: var(--scrollbar-width-legacy);
+    max-height: var(--scrollbar-width-legacy);
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-color-thumb);
+    border-radius: 0px;
+    border: 0px none var(--background);
+  }
+  *::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-color-track);
+  }
+}
+
+@supports (scrollbar-width: auto) {
+  * {
+    scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
+    scrollbar-width: var(--scrollbar-width);
+  }
 }

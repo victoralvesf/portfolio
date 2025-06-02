@@ -1,3 +1,5 @@
+import { engineName } from "react-device-detect"
+
 export type FilterType = "crt" | "scanlines" | "gameboy" | "off"
 
 const labels = {
@@ -34,12 +36,18 @@ export function setSavedFilter() {
 }
 
 export function getNextFilter(current: FilterType) {
-  const filters: FilterType[] = ["crt", "scanlines", "gameboy", "off"];
+  const filters: FilterType[] = ["crt", "scanlines"]
 
-  const currentIndex = filters.indexOf(current);
-  const nextIndex = (currentIndex + 1) % filters.length;
+  // Enable gameboy effect only for chrome and chrome based browsers.
+  const isChromium = engineName === 'Blink'
+  if (isChromium) filters.push("gameboy")
+  
+  filters.push("off")
 
-  return filters[nextIndex];
+  const currentIndex = filters.indexOf(current)
+  const nextIndex = (currentIndex + 1) % filters.length
+
+  return filters[nextIndex]
 }
 
 export function isMobile() {

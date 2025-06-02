@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 import react from '@astrojs/react';
-import vercelStatic from '@astrojs/vercel/static';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,5 +12,5 @@ export default defineConfig({
   },
   integrations: [react()],
   output: 'static',
-  adapter: vercelStatic({})
+  adapter: vercel({})
 });

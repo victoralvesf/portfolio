@@ -1,48 +1,49 @@
 ---
 import { GithubIcon, LinkedinIcon, MailIcon } from "lucide-react";
 import { SocialLink } from "@/components/social";
+import { Avatar } from "@/components/avatar";
 import { Image } from "astro:assets";
 
 const socials = [
   {
     href: "https://github.com/victoralvesf",
     label: "Github",
+    text: "Github",
     icon: GithubIcon,
   },
   {
     href: "https://linkedin.com/in/victoralvesf",
     label: "LinkedIn",
+    text: "LinkedIn",
     icon: LinkedinIcon,
   },
   {
     href: "mailto:contato@victoralvesf.com",
     label: "E-mail",
+    text: "Contact me",
     icon: MailIcon,
   },
 ];
 ---
 
 <aside
-  class="w-full md:w-xs md:min-w-xs max-md:border-b md:border-r border-border/75 md:h-full flex flex-row md:flex-col items-center py-8 px-6 gap-4"
+  class="w-full md:w-xs md:min-w-xs max-md:border-b md:border-r border-border/75 md:h-full flex flex-col items-start md:items-center py-6 px-4 md:py-8 md:px-6 gap-4"
 >
-  <div
-    class="hidden min-w-full aspect-square bg-foreground/10 md:block border-4 border-border/75"
-  >
-    <Image
-      src="/avatar_pixel_art.png"
-      alt="Victor Alves"
-      class="aspect-square grayscale-50 hover:grayscale-0 transition-all text-transparent"
-      width="1024"
-      height="1024"
-    />
-  </div>
+  <Avatar />
 
   <div class="flex gap-2 md:gap-4 flex-col">
-    <div>
-      <h2 class="text-xl md:text-3xl font-bold">Victor Alves</h2>
-      <p class="text-foreground/70 font-semibold text-base md:text-lg">
-        Fullstack Developer
-      </p>
+    <div class="flex gap-2 items-end">
+      <Avatar
+        className="block md:hidden min-w-fit"
+        imageClassName="size-20"
+      />
+
+      <div>
+        <h2 class="text-xl md:text-3xl font-bold">Victor Alves</h2>
+        <p class="text-foreground/70 font-semibold text-base md:text-lg">
+          Fullstack Developer
+        </p>
+      </div>
     </div>
 
     <div class="text-pretty">
@@ -52,12 +53,13 @@ const socials = [
     </div>
   </div>
 
-  <div class="max-md:ml-auto md:mt-auto">
-    <div class="flex mt-4 flex-col md:flex-row" aria-label="Social media">
+  <div class="max-md:mr-auto md:mt-auto">
+    <div class="flex mt-2 md:mt-4 flex-row" aria-label="Social media">
       {
         socials.map((item, index) => (
           <SocialLink key={index} href={item.href} label={item.label}>
-            <item.icon className="size-6" />
+            <item.icon className="size-4 md:size-6" />
+            <span class="block md:hidden ml-2 text-sm">{item.text}</span>
           </SocialLink>
         ))
       }
